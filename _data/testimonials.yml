@@ -1,0 +1,14 @@
+- name: John Smith
+  position: Project Manager at XYZ
+  quote: Working with Marcin was a pleasure. He delivered outstanding results ahead of schedule and was extremely professional throughout the project.
+  avatar: /assets/images/testimonials/john.jpg
+
+- name: Sarah Johnson
+  position: CEO of ABC Startup
+  quote: Marcin's technical skills and creative approach helped transform our vision into reality. I would highly recommend him for any web development project.
+  avatar: /assets/images/testimonials/sarah.jpg
+
+- name: Michael Wong
+  position: Lead Developer at Tech Co.
+  quote: Marcin is a talented developer with excellent problem-solving skills. His attention to detail and commitment to quality code made him an invaluable team member.
+  avatar: /assets/images/testimonials/michael.jpg

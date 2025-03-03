@@ -1,0 +1,34 @@
+- name: Technical Skills
+  skills:
+    - name: HTML/CSS
+      level: 95
+    - name: JavaScript
+      level: 90
+    - name: React
+      level: 85
+    - name: Node.js
+      level: 80
+    - name: Python
+      level: 75
+
+- name: Design Skills
+  skills:
+    - name: UI/UX Design
+      level: 85
+    - name: Adobe XD
+      level: 80
+    - name: Figma
+      level: 90
+    - name: Photoshop
+      level: 75
+
+- name: Soft Skills
+  skills:
+    - name: Communication
+      level: 95
+    - name: Project Management
+      level: 90
+    - name: Problem Solving
+      level: 95
+    - name: Teamwork
+      level: 90

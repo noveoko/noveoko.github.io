@@ -1,0 +1,77 @@
+---
+layout: default
+---
+
+<section class="project-header">
+  <div class="container">
+    <h1>{{ page.title }}</h1>
+    <div class="project-meta">
+      <span class="project-date">{{ page.date | date: "%B %Y" }}</span>
+      <span class="project-category">{{ page.category }}</span>
+    </div>
+  </div>
+</section>
+
+<div class="project-content">
+  <div class="container">
+    {% if page.featured_image %}
+    <div class="project-featured-image">
+      <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title }}">
+    </div>
+    {% endif %}
+    
+    <div class="project-details">
+      <div class="project-info">
+        <h3>Project Overview</h3>
+        {{ page.overview | markdownify }}
+        
+        {% if page.technologies %}
+        <div class="technologies">
+          <h3>Technologies Used</h3>
+          <ul class="tags">
+            {% for tech in page.technologies %}
+            <li>{{ tech }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        
+        {% if page.website_url %}
+        <div class="project-links">
+          <a href="{{ page.website_url }}" class="btn btn-primary" target="_blank">Visit Website</a>
+        </div>
+        {% endif %}
+        
+        {% if page.github_url %}
+        <div class="project-links">
+          <a href="{{ page.github_url }}" class="btn btn-secondary" target="_blank">View Code</a>
+        </div>
+        {% endif %}
+      </div>
+      
+      <div class="project-description">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="project-navigation">
+  <div class="container">
+    <div class="prev-next">
+      {% if page.previous.url %}
+      <a class="prev" href="{{ page.previous.url | relative_url }}">
+        <span>Previous Project</span>
+        <strong>{{ page.previous.title }}</strong>
+      </a>
+      {% endif %}
+      
+      {% if page.next.url %}
+      <a class="next" href="{{ page.next.url | relative_url }}">
+        <span>Next Project</span>
+        <strong>{{ page.next.title }}</strong>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

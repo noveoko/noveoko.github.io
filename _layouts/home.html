@@ -1,0 +1,91 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>{{ page.title }}</h1>
+      <p class="tagline">{{ page.tagline }}</p>
+      <a href="{{ page.cta_link }}" class="btn btn-primary">{{ page.cta_text }}</a>
+    </div>
+    <div class="hero-image">
+      <img src="{{ page.hero_image | relative_url }}" alt="{{ page.hero_image_alt }}">
+    </div>
+  </div>
+</section>
+
+{{ content }}
+
+<section class="featured-projects">
+  <div class="container">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      {% assign featured_projects = site.projects | where: "featured", true | limit: 3 %}
+      {% for project in featured_projects %}
+      <div class="project-card">
+        <a href="{{ project.url | relative_url }}">
+          <div class="project-image">
+            <img src="{{ project.thumbnail | relative_url }}" alt="{{ project.title }}">
+          </div>
+          <div class="project-details">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.excerpt }}</p>
+            <span class="view-project">View Project</span>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center">
+      <a href="{{ '/projects' | relative_url }}" class="btn btn-secondary">View All Projects</a>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="container">
+    <h2>Skills & Expertise</h2>
+    <div class="skills-container">
+      {% for category in site.data.skills %}
+      <div class="skill-category">
+        <h3>{{ category.name }}</h3>
+        <div class="skills-list">
+          {% for skill in category.skills %}
+          <div class="skill-item">
+            <span class="skill-name">{{ skill.name }}</span>
+            <div class="skill-bar">
+              <div class="skill-level" style="width: {{ skill.level }}%"></div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <h2>What People Say</h2>
+    <div class="testimonials-slider">
+      {% for testimonial in site.data.testimonials %}
+      <div class="testimonial">
+        <div class="testimonial-content">
+          <p>"{{ testimonial.quote }}"</p>
+        </div>
+        <div class="testimonial-author">
+          {% if testimonial.avatar %}
+          <img src="{{ testimonial.avatar | relative_url }}" alt="{{ testimonial.name }}">
+          {% endif %}
+          <div>
+            <strong>{{ testimonial.name }}</strong>
+            <span>{{ testimonial.position }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
