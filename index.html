@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcin Kraszewski - Software Engineer, Data Scientist, Speaker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d47a1;
+            --secondary-color: #1976d2;
+            --dark-color: #002171;
+            --light-color: #f5f8fa;
+            --beige-color: #f5f8fa;
+            --danger-color: #d32f2f;
+            --success-color: #2196f3;
+            --max-width: 1400px;
+            --text-color: #0a2540;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--beige-color);
+        }
+
+        ::selection {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            padding: 4rem 0 2rem;
+        }
+
+        .header-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--text-color);
+        }
+
+        .header-info {
+            flex: 0 0 50%;
+            border-top: 1px solid var(--text-color);
+            padding-top: 2rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-img-container {
+            flex: 0 0 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            background-color: var(--beige-color);
+            z-index: 100;
+            border-bottom: 1px solid rgba(13, 71, 161, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 33, 113, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-separator {
+            color: #999;
+        }
+
+        .nav-links li a {
+            position: relative;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--text-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        /* Section styling */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .border-top {
+            border-top: 1px solid var(--text-color);
+            padding-top: 2rem;
+        }
+
+        /* Two column layout */
+        .two-col {
+            display: flex;
+            gap: 4rem;
+        }
+
+        .two-col > div {
+            flex: 1;
+        }
+
+        .body-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills toggles */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill {
+            background-color: transparent;
+            border: 1px solid var(--text-color);
+            border-radius: 0;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-2px);
+        }
+
+        .skill.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Tagged content */
+        .highlight-python { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-javascript { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-typescript { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-sql { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-powershell { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-aws { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-terraform { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-pyspark { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-azure { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-cicd { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-git { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-vuejs { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-bert { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-gpt { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-datascience { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-ml { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-osint { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-dataviz { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-automation { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+        .highlight-webdev { background-color: rgba(13, 71, 161, 0.08); border-left: 2px solid var(--primary-color); padding-left: 5px; }
+
+        .skill-info {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,33,113,0.3);
+            z-index: 100;
+            display: none;
+            font-size: 0.9rem;
+            max-width: 90%;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Experience */
+        .timeline {
+            margin-left: 1rem;
+            padding-left: 2rem;
+            border-left: 1px solid var(--text-color);
+            position: relative;
+        }
+
+        .timeline-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--text-color);
+            left: -2.5rem;
+            top: 0.5rem;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-weight: bold;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .timeline-company {
+            font-weight: 600;
+        }
+
+        .timeline-date {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .timeline-desc {
+            color: #555;
+        }
+
+        .timeline-desc ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-img {
+            width: 100%;
+            aspect-ratio: 3/2;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            filter: grayscale(100%);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .project-card:hover .project-img {
+            filter: grayscale(0%);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        /* Articles & Videos */
+        .articles-list, .videos-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .articles-list li, .videos-list li {
+            border-top: 1px solid #ddd;
+            padding-top: 1.5rem;
+            list-style: none;
+        }
+
+        .articles-list li:first-child, .videos-list li:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .article-title, .video-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .article-date, .video-date {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-excerpt, .video-excerpt {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-text {
+            font-size: 1.8rem;
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            font-style: normal;
+            font-size: 1rem;
+        }
+
+        /* Call to action */
+        .cta {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(13, 71, 161, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-left {
+            flex: 0 0 60%;
+        }
+
+        .footer-right {
+            flex: 0 0 30%;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            color: var(--beige-color);
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: white;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(242, 239, 231, 0.2);
+            font-size: 0.8rem;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            opacity: 1;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .btn-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--secondary-color);
+        }
+
+        /* Brands */
+        .brands {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .brands li {
+            font-size: 1.2rem;
+            list-style: none;
+        }
+
+        /* Images */
+        .full-width-img {
+            width: 100%;
+            height: auto;
+            margin: 4rem 0;
+        }
+
+        /* Media queries */
+        @media (max-width: 992px) {
+            .two-col {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+
+            .header-info, .profile-img-container {
+                flex: 0 0 100%;
+            }
+
+            .profile-img-container {
+                align-items: flex-start;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-left, .footer-right {
+                flex: 0 0 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .testimonial-text {
+                font-size: 1.5rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .nav-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .testimonial-text {
+                font-size: 1.2rem;
+            }
+
+            .brands {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="site-title">Marcin Kraszewski</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="mailto:mrkraszewski@gmail.com">Email</a></li>
+                </ul>
+                <span class="nav-separator">•</span>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#talks">Talks</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-info">
+                    <h1>Software Engineer, Data Scientist, and Speaker ready to solve your next challenge.</h1>
+                    <p>I help companies build innovative solutions with Python, data analysis, and automation. From simple scripts to enterprise-level systems, I can bring your ideas to life.</p>
+                </div>
+                <div class="profile-img-container">
+                    <div class="profile-img-wrapper">
+                        <img src="images/profile.png" alt="Marcin Kraszewski" class="profile-img">
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/marcinkraszewski" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://medium.com/@marcinkraszewski" target="_blank"><i class="fab fa-medium"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="two-col">
+                <div>
+                    <p class="body-text">For over 5 years I've been developing solutions for businesses across a variety of industries. With expertise in Python, automation, and data science, I've helped organizations streamline their processes and make data-driven decisions.</p>
+                    <p class="body-text">I'm particularly passionate about OSINT investigations, creative applications of AI, and building tools that solve real-world problems.</p>
+                </div>
+                <div>
+                    <p class="body-text">As a <em>full-stack developer</em>, I can take your project from concept to completion, handling everything from data processing to user interface design.</p>
+                    <p class="body-text">Whether you need a data pipeline, an automated workflow, or a complete web application, I can help you develop a solution tailored to your specific needs. <a href="mailto:mrkraszewski@gmail.com" class="btn-link">Let's discuss your project</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section border-top">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Systems Integration Specialist</div>
+                            <div class="timeline-company">Hapag-Lloyd</div>
+                        </div>
+                        <div class="timeline-date">June 2024 - Present</div>
+                    </div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Developed CI/CD pipelines running on AWS</li>
+                            <li>Integrated third-party APIs with Databricks Data lake</li>
+                            <li>Gained experience with Terraform, and Pyspark</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Senior Data Scientist</div>
+                            <div class="timeline-company">ING</div>
+                        </div>
+                        <div class="timeline-date">September 2023 - March 2024</div>
+                    </div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Refactored Codebase for Enhanced Reliability</li>
+                            <li>Mentored Team Members in Code Quality and Test Automation</li>
+                            <li>Utilized Pyspark on Azure Cloud for Data Analysis</li>
+                            <li>Implemented Type Hinting for Improved Maintainability</li>
+                            <li>Facilitated Peer Code Reviews and Collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Technical Lead (Python)</div>
+                            <div class="timeline-company">EY</div>
+                        </div>
+                        <div class="timeline-date">May 2021 - July 2023</div>
+                    </div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Refactored, updated, rewrote, and maintained Python code</li>
+                            <li>Development environment fully integrated with the Azure Devops CI/CD solution</li>
+                            <li>Worked on a cross-functional team with analysts, engineers, and domain experts</li>
+                            <li>In addition to Python regularly made use of custom SQL queries</li>
+                            <li>On occasion read and wrote JavaScript/TypeScript code</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Senior IT Developer (Automation)</div>
+                            <div class="timeline-company">Nordea</div>
+                        </div>
+                        <div class="timeline-date">April 2020 - April 2021</div>
+                    </div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Led the development of an innovative web application that helps anyone at Nordea create an automated service by building it using a GUI then exporting to JSON</li>
+                            <li>Converted a 20,000 article knowledgebase into a static application using Python and JavaScript</li>
+                            <li>Applied open source intelligence techniques, driven by web scraping and API calls to services</li>
+                            <li>Automated a dozen business processes using Powershell, and Python</li>
+                            <li>Developed a suite of automated and easy to configure actions using RobotFramework</li>
+                            <li>Instructed employees in 3 entry-level courses in Python & JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section border-top">
+            <h2 class="section-title">Education & Training</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Bachelor of Fine Arts, Time Based Media: Animation</div>
+                            <div class="timeline-company">Milwaukee Institute of Art & Design</div>
+                        </div>
+                        <div class="timeline-date">2006 - 2009</div>
+                    </div>
+                    <div class="timeline-desc">
+                        <p>Studied Time Based Media with a focus on Animation techniques, visual storytelling, and digital content creation.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-title">Associate in Applied Science, Time Based Media: Animation</div>
+                            <div class="timeline-company">Milwaukee Area Technical College</div>
+                        </div>
+                        <div class="timeline-date">2003 - 2006</div>
+                    </div>
+                    <div class="timeline-desc">
+                        <p><strong>Activities and societies:</strong> MATC Times Student Newspaper</p>
+                        <p>Foundational education in animation techniques, storytelling, and multimedia production.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial -->
+        <section class="section border-top">
+            <figure class="testimonial">
+                <blockquote>
+                    <p class="testimonial-text">"Marcin is very open minded and dedicated to his work. He also has a very optimistic approach even is stressful situations."</p>
+                </blockquote>
+                <figcaption class="testimonial-author">— 
+                    Emil K., GTM & Revenue Operations</figcaption>
+            </figure>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section border-top">
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <img src="images/7.png" alt="Project 1" class="project-img">
+                    <h3 class="project-title">OSINT Investigation Dashboard</h3>
+                    <p class="project-desc">A comprehensive dashboard for Open Source Intelligence investigations, featuring data visualization, automated reporting, and integration with various public data sources.</p>
+                </article>
+                <article class="project-card">
+                    <img src="images/6.png" alt="Project 2" class="project-img">
+                    <h3 class="project-title">Semantic Job Search Engine</h3>
+                    <p class="project-desc">A job search tool using GPT-4 and BERT for semantic matching between job descriptions and user skills, providing more relevant results than keyword-based searches.</p>
+                </article>
+                <article class="project-card">
+                    <img src="images/1.png" alt="Project 3" class="project-img">
+                    <h3 class="project-title">Automated Data Pipeline</h3>
+                    <p class="project-desc">An end-to-end data pipeline for a financial institution, processing transaction data in real-time using Azure services and custom Python components.</p>
+                </article>
+            </div>
+            <div style="text-align: right; margin-top: 2rem;">
+                <a href="#" class="btn-link">View all projects</a>
+            </div>
+        </section>
+
+        <!-- Brands Section -->
+        <section class="section border-top">
+            <h2 class="section-title">I've worked with</h2>
+            <ul class="brands">
+                <li>ING</li>
+                <li>EY</li>
+                <li>Nordea</li>
+                <li>Hapag-Lloyd</li>
+                <li>Devskiller</li>
+                <li>Groupon</li>
+                <li>Moneygram</li>
+                <li>Microsoft</li>
+            </ul>
+        </section>
+
+        <!-- Full Width Image -->
+        <img src="images/5.png" alt="Workspace" class="full-width-img">
+
+        <!-- Articles Section -->
+        <section id="articles" class="section border-top">
+            <div class="two-col">
+                <div>
+                    <h2 class="section-title">Articles & Publications</h2>
+                </div>
+                <div>
+                    <ul class="articles-list">
+                        <li>
+                            <a href="https://medium.com/@marcinkraszewski/siraj-ravals-lost-interview-600b882bdff9" class="article-title">Siraj Raval's Lost Interview</a>
+                            <div class="article-date">March 4, 2024</div>
+                            <p class="article-excerpt">Before the interview was wiped clean from the internet, I decided to create a back-up. My caution was warranted as within a few weeks of publication...</p>
+                        </li>
+                        <li>
+                            <a href="https://medium.com/@marcinkraszewski/solving-crimes-using-a-technique-from-astronomy-5186487d536f" class="article-title">Solving crimes using a technique from Astronomy</a>
+                            <div class="article-date">October 7, 2023</div>
+                            <p class="article-excerpt">This article concerns a double homicide and explores how astronomical techniques can be applied to forensic investigations.</p>
+                        </li>
+                        <li>
+                            <a href="https://medium.com/@marcinkraszewski/roll-your-own-semantic-job-search-using-gpt4-python-and-bert-74b97daaadf9" class="article-title">Roll your own Semantic Job search using GPT4, Python, and BERT</a>
+                            <div class="article-date">May 31, 2023</div>
+                            <p class="article-excerpt">I like to make use of the site: justjoin.it when job hunting and created a semantic search solution using AI.</p>
+                        </li>
+                        <li>
+                            <a href="https://medium.com/@marcinkraszewski/neom-recent-satellite-photos-7403713dd78e" class="article-title">NEOM: Recent Satellite Photos</a>
+                            <div class="article-date">February 14, 2023</div>
+                            <p class="article-excerpt">We've all seen the photo of the dump trucks in the Saudi dessert working on the foundations of the NEOM 100 mile-long city. However what is...</p>
+                        </li>
+                        <li>
+                            <a href="https://medium.com/@marcinkraszewski/awakening-in-a-heartless-world-579acbf23147" class="article-title">Awakening in a Heartless World</a>
+                            <div class="article-date">December 11, 2022</div>
+                            <p class="article-excerpt">A graphic novel written by ChatGPT in cooperation with Marcin Kraszewski. Illustrated using prompts written by Marcin Kraszewski and...</p>
+                        </li>
+                    </ul>
+                    <div style="text-align: right; margin-top: 2rem;">
+                        <a href="https://medium.com/@marcinkraszewski" target="_blank" class="btn-link">Read all articles</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section id="videos" class="section border-top">
+            <div class="two-col">
+                <div>
+                    <h2 class="section-title">Videos & Tutorials</h2>
+                </div>
+                <div>
+                    <ul class="videos-list">
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=wj2nwAR4iTU" class="video-title">Building a Real Estate Dashboard with Anthropic Claude 3.7 AI</a>
+                            <div class="video-date">2024 • 355 views</div>
+                            <p class="video-excerpt">A tutorial on how to build an interactive real estate dashboard using Anthropic's Claude 3.7 AI.</p>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=yCtCK_0WTdM" class="video-title">33 Amazing Search Tools for OSINT Investigations</a>
+                            <div class="video-date">2022 • 571 views</div>
+                            <p class="video-excerpt">Discover 33 powerful search tools that can enhance your Open Source Intelligence investigations.</p>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=zgRc2wTiug8" class="video-title">GPT-3 Part 2: Using my voice to chat with OpenAI's GPT-3 model</a>
+                            <div class="video-date">2020 • 14K+ views</div>
+                            <p class="video-excerpt">Demonstrating a voice interface for conversing with OpenAI's GPT-3 language model.</p>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=-qizU_v-oqA" class="video-title">Build 2 projects using GPT-3 in just a couple of minutes</a>
+                            <div class="video-date">2020 • 19K+ views</div>
+                            <p class="video-excerpt">Quick tutorial on building a branding generator and chat bot using GPT-3.</p>
+                        </li>
+                    </ul>
+                    <div style="text-align: right; margin-top: 2rem;">
+                        <a href="https://www.youtube.com/@SchoolofAI/videos" target="_blank" class="btn-link">Watch all videos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Talks Section -->
+        <section id="talks" class="section border-top">
+            <h2 class="section-title">Conference Talks & Presentations</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <img src="images/2.png" alt="Talk 1" class="project-img">
+                    <h3 class="project-title">Take action to protect your attention and focus</h3>
+                    <div class="video-date">2022 • WarsawJS</div>
+                    <p class="project-desc">I've created a tool to help you customize your apps/news feeds by reducing the effectiveness of dark patterns and other distractions.</p>
+                    <a href="https://www.youtube.com/watch?v=xKCPyLC4knM" target="_blank" class="btn-link">Watch talk</a>
+                </article>
+                <article class="project-card">
+                    <img src="images/4.png" alt="Talk 2" class="project-img">
+                    <h3 class="project-title">Petridysh: Visualize tabular data as a biologist "sort of"</h3>
+                    <div class="video-date">2023 • WarsawJS</div>
+                    <p class="project-desc">Graphs and charts can only tell us so much about our data. What if there was a way to breath "life" into your visuals? This lightning talk explores an innovative approach to data visualization.</p>
+                    <a href="https://www.youtube.com/watch?v=nVf8zGrvTgE" target="_blank" class="btn-link">Watch talk</a>
+                </article>
+                <article class="project-card">
+                    <img src="images/3.png" alt="Talk 3" class="project-img">
+                    <h3 class="project-title">Ductube - a little tool to remove annoying content</h3>
+                    <div class="video-date">2022 • WarsawJS</div>
+                    <p class="project-desc">A lightning talk about a browser extension I created to filter out unwanted content from video platforms.</p>
+                    <a href="https://www.youtube.com/watch?v=EH6rUgXrYCc" target="_blank" class="btn-link">Watch talk</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section border-top">
+            <h2 class="section-title">Skills & Technologies</h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem; font-size: 1.3rem;">Programming Languages</h3>
+                <div class="skills-container">
+                    <span class="skill active" data-skill="python">Python</span>
+                    <span class="skill" data-skill="javascript">JavaScript</span>
+                    <span class="skill" data-skill="typescript">TypeScript</span>
+                    <span class="skill" data-skill="sql">SQL</span>
+                    <span class="skill" data-skill="powershell">Powershell</span>
+                    <span class="skill" data-skill="bash">Bash</span>
+                    <span class="skill" data-skill="groovy">Groovy</span>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem; font-size: 1.3rem;">Technologies & Frameworks</h3>
+                <div class="skills-container">
+                    <span class="skill" data-skill="robotframework">RobotFramework</span>
+                    <span class="skill" data-skill="selenium">Selenium</span>
+                    <span class="skill" data-skill="azure">Azure DevOps</span>
+                    <span class="skill" data-skill="aws">AWS</span>
+                    <span class="skill" data-skill="terraform">Terraform</span>
+                    <span class="skill" data-skill="pyspark">Pyspark</span>
+                    <span class="skill" data-skill="azure">Azure Cloud</span>
+                    <span class="skill" data-skill="cicd">CI/CD</span>
+                    <span class="skill" data-skill="git">Git</span>
+                    <span class="skill" data-skill="vuejs">Vue.js</span>
+                    <span class="skill" data-skill="bert">BERT</span>
+                    <span class="skill" data-skill="gpt">GPT Models</span>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem; font-size: 1.3rem;">Areas of Expertise</h3>
+                <div class="skills-container">
+                    <span class="skill" data-skill="datascience">Data Science</span>
+                    <span class="skill" data-skill="ml">Machine Learning</span>
+                    <span class="skill" data-skill="osint">OSINT Investigations</span>
+                    <span class="skill" data-skill="automation">Automation</span>
+                    <span class="skill" data-skill="webdev">Web Development</span>
+                    <span class="skill" data-skill="dataviz">Data Visualization</span>
+                    <span class="skill" data-skill="writing">Technical Writing</span>
+                    <span class="skill" data-skill="speaking">Public Speaking</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem; padding: 1.2rem; background-color: rgba(13, 71, 161, 0.05); border-radius: 6px; border-left: 4px solid var(--primary-color);">
+                <p><strong>Try it:</strong> Click on any skill to highlight related content throughout the page!</p>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="section border-top">
+            <div class="cta">
+                <h2 class="cta-title">Let's work together</h2>
+                <p class="cta-text">I'm currently available for freelance projects, consulting work, and speaking engagements.</p>
+                <a href="mailto:marcin@qrpto.com" class="cta-button">Get in touch</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3 class="footer-title">Marcin Kraszewski</h3>
+                    <p class="footer-text">Software Engineer, Data Scientist, and Speaker based in Poland. Specializing in Python development, data analysis, and automation solutions.</p>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/marcinkraszewski/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/noveoko?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://medium.com/@marcinkraszewski" target="_blank"><i class="fab fa-medium"></i></a>
+                        <a href="https://www.youtube.com/noveoko" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#articles">Articles</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                        <li><a href="#talks">Talks</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Marcin Kraszewski. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === "#") return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (!targetElement) return;
+                
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - navbarHeight - 20,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Highlight active section in navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href').startsWith('#')) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // Skill highlighting functionality
+        const skills = document.querySelectorAll('.skill');
+        const skillInfo = document.createElement('div');
+        skillInfo.className = 'skill-info';
+        document.body.appendChild(skillInfo);
+
+        // Add data attributes to relevant elements
+        const addSkillDataAttributes = () => {
+            // Experience items
+            document.querySelectorAll('.timeline-desc li').forEach(item => {
+                const text = item.textContent.toLowerCase();
+                
+                if (text.includes('python')) item.dataset.skill = 'python';
+                if (text.includes('javascript')) item.dataset.skill = 'javascript';
+                if (text.includes('typescript')) item.dataset.skill = 'typescript';
+                if (text.includes('sql')) item.dataset.skill = 'sql';
+                if (text.includes('powershell')) item.dataset.skill = 'powershell';
+                if (text.includes('bash')) item.dataset.skill = 'bash';
+                if (text.includes('robot')) item.dataset.skill = 'robotframework';
+                if (text.includes('aws')) item.dataset.skill = 'aws';
+                if (text.includes('azure')) item.dataset.skill = 'azure';
+                if (text.includes('terraform')) item.dataset.skill = 'terraform';
+                if (text.includes('pyspark')) item.dataset.skill = 'pyspark';
+                if (text.includes('ci/cd')) item.dataset.skill = 'cicd';
+                if (text.includes('git')) item.dataset.skill = 'git';
+                if (text.includes('vue')) item.dataset.skill = 'vuejs';
+                if (text.includes('bert')) item.dataset.skill = 'bert';
+                if (text.includes('gpt')) item.dataset.skill = 'gpt';
+                if (text.includes('automation')) item.dataset.skill = 'automation';
+                if (text.includes('data')) item.dataset.skill = 'datascience';
+                if (text.includes('visualization')) item.dataset.skill = 'dataviz';
+                if (text.includes('web')) item.dataset.skill = 'webdev';
+                if (text.includes('osint')) item.dataset.skill = 'osint';
+                if (text.includes('machine learning')) item.dataset.skill = 'ml';
+            });
+            
+            // Project titles and descriptions
+            document.querySelectorAll('.project-title, .project-desc, .article-title, .article-excerpt, .video-title, .video-excerpt').forEach(element => {
+                const text = element.textContent.toLowerCase();
+                
+                if (text.includes('python')) element.dataset.skill = 'python';
+                if (text.includes('javascript')) element.dataset.skill = 'javascript';
+                if (text.includes('typescript')) element.dataset.skill = 'typescript';
+                if (text.includes('sql')) element.dataset.skill = 'sql';
+                if (text.includes('aws')) element.dataset.skill = 'aws';
+                if (text.includes('azure')) element.dataset.skill = 'azure';
+                if (text.includes('gpt')) element.dataset.skill = 'gpt';
+                if (text.includes('bert')) element.dataset.skill = 'bert';
+                if (text.includes('osint') || text.includes('investigation')) element.dataset.skill = 'osint';
+                if (text.includes('visualization') || text.includes('visual') || text.includes('dashboard')) element.dataset.skill = 'dataviz';
+                if (text.includes('data science')) element.dataset.skill = 'datascience';
+                if (text.includes('machine learning') || text.includes('ai')) element.dataset.skill = 'ml';
+                if (text.includes('automation')) element.dataset.skill = 'automation';
+            });
+        };
+        
+        addSkillDataAttributes();
+
+        let activeSkill = 'python'; // Start with Python active
+        
+        // Initially highlight Python-related content
+        const highlightInitialPython = () => {
+            const pythonItems = document.querySelectorAll('[data-skill="python"]');
+            pythonItems.forEach(item => {
+                item.classList.add('highlight-python');
+            });
+        };
+        
+        highlightInitialPython();
+        
+        const clearHighlights = () => {
+            document.querySelectorAll('[data-skill]').forEach(el => {
+                const allClasses = [...el.classList];
+                allClasses.forEach(cls => {
+                    if (cls.startsWith('highlight-')) {
+                        el.classList.remove(cls);
+                    }
+                });
+            });
+            
+            skills.forEach(skill => {
+                skill.classList.remove('active');
+            });
+            
+            skillInfo.style.display = 'none';
+            skillInfo.style.opacity = '0';
+            
+            activeSkill = null;
+        };
+        
+        const highlightSkill = (skillName) => {
+            // If this skill is already active, deactivate it
+            if (activeSkill === skillName) {
+                clearHighlights();
+                return;
+            }
+            
+            // Clear all highlights first
+            clearHighlights();
+            
+            // Set new active skill
+            activeSkill = skillName;
+            
+            // Highlight the skill button
+            document.querySelector(`.skill[data-skill="${skillName}"]`).classList.add('active');
+            
+            // Count the items with this skill
+            const items = document.querySelectorAll(`[data-skill="${skillName}"]`);
+            
+            // Show info tooltip
+            const count = items.length;
+            skillInfo.textContent = `${count} item${count !== 1 ? 's' : ''} found related to "${skillName}"`;
+            skillInfo.style.display = 'block';
+            setTimeout(() => {
+                skillInfo.style.opacity = '1';
+            }, 10);
+            
+            // Hide the tooltip after 3 seconds
+            setTimeout(() => {
+                skillInfo.style.opacity = '0';
+                setTimeout(() => {
+                    if (activeSkill === skillName) {
+                        skillInfo.style.display = 'none';
+                    }
+                }, 300);
+            }, 3000);
+            
+            // Add highlight class to matching elements
+            items.forEach(item => {
+                item.classList.add(`highlight-${skillName}`);
+            });
+        };
+        
+        skills.forEach(skill => {
+            skill.addEventListener('click', () => {
+                const skillName = skill.dataset.skill;
+                highlightSkill(skillName);
+            });
+        });
+
+        // Sticky navbar effect
+        const navbar = document.querySelector('.navbar');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+    </script>
+</body>
+</html>
